@@ -3,6 +3,10 @@ python:
   - "3.6"
 cache: pip
 install:
+  - pip install codecov
   - pip install -r requirements.txt
 script:
-  - py.test --cov-report term-missing --cov algorithms -v test
+  - py.test --cov algorithms -v test
+
+after_success:
+  - codecov
