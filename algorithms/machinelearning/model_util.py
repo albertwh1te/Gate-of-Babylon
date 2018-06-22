@@ -51,9 +51,7 @@ def lgb_train(train_data, val_data, parameters):
     """
     model = lgb.train(parameters,
                       train_data,
-                      valid_sets=[train_data, val_data],
-                      num_boost_round=5000,
-                      early_stopping_rounds=100)
+                      valid_sets=[train_data, val_data])
     log('train finished')
     return model
 
@@ -69,7 +67,7 @@ def evaluate(model, X_test, y_test):
     false_positive_rate, true_positive_rate, thresholds = roc_curve(
         y_test, y_pred)
     log("false_positive_rate:{fpr}\ntrue_positive_rate:{tpr}".format(
-        fp=false_positive_rate, tp=true_positive_rate))
+        fpr=false_positive_rate, tpr=true_positive_rate))
     log(roc_auc_score(y_test, y_pred))
 
 
@@ -77,12 +75,12 @@ def runLGB(raw: pd.DataFrame, parameters: dict, lablename: str):
     """
     split => train => evaluation
     """
-    X = raw.drop(columns=[labelname])
-    y = raw[labelname]
+    X = raw.drop(columns=[lablename])
+    y = raw[lablename]
     # pandas dataframe to lightgbm datasets
     X_train, y_train, X_test, y_test, X_val, y_val = TrainTestValidation(X, y)
     train_data = lgb.Dataset(X_train, label=y_train)
     val_data = lgb.Dataset(X_val, label=y_val)
-    model = train(train_data, val_data, parameters)
+    model = lgb_train(train_data, val_data, parameters)
     evaluate(model, X_test, y_test)
     return model

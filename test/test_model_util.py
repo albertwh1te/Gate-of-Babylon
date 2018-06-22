@@ -1,7 +1,8 @@
 """Test for model_util.py
 """
-from random import randint
+import numpy as np
 import pandas as pd
+from random import randint, choice
 from algorithms.machinelearning import model_util
 
 
@@ -48,3 +49,30 @@ def test_TrainTestValidation():
     assert abs(test_ration - 0.2) < 0.1
     val_ration = len(y_val) / (len(y_train) + len(y_val))
     assert abs(val_ration - 0.2) < 0.1
+
+
+def test_runLGB():
+    parameters = {
+        'application': 'binary',
+        'min_data': 1,
+        'min_data_in_bin': 1,
+        'verbose_eval': False,
+        'num_boost_round': 100
+    }
+    xor = [[0, 0, 1, 0],
+           [0, 1, 1, 1],
+           [1, 0, 1, 1],
+           [1, 1, 1, 0]]
+    raw = pd.DataFrame(np.array(
+        [choice(xor) for _ in range(randint(80, 100))]
+    ))
+    model = model_util.runLGB(raw, parameters, 3)
+    X_pred = pd.DataFrame(np.array(
+        [[0, 0, 1],
+         [0, 1, 1]]
+    ))
+
+    y = np.array([0, 1])
+    y_pred = model.predict(X_pred)
+    y_pred = np.rint(y_pred)
+    assert np.allclose(y, y_pred)
