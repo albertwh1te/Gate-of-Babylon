@@ -1,11 +1,15 @@
-"""
-lightgbm pipeline
+"""machinelearning model utility code
+includes but not limited to,
+model selection ,train test split,feature engineering and model training.
 """
 from random import randint
 import pandas as pd
 import lightgbm as lgb
 from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.metrics import roc_curve, auc, roc_auc_score
+
+
+__all__ = ['TrainTestValidation', 'runLGB', 'split', 'evaluate']
 
 TRAIN_TEST_SPLIT_NUMBER = 2 / 10
 TRAIN_TEST_SPLIT_NUMBER = 2 / 10
