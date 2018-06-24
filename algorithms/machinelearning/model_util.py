@@ -26,7 +26,7 @@ def TrainTestValidation(X, y):
     X_train, y_train, X_test, y_test = split(X, y, 0.2)
     X_train, y_train, X_val, y_val = split(X_train, y_train, 0.2)
     log("split part is finished and the train,test validation nums are")
-    log(X_train.shape, X_test.shape, y_train.shape,
+    log(X_train.shape, y_train.shape, X_test.shape,
         y_test.shape, X_val.shape, y_val.shape)
     return X_train, y_train, X_test, y_test, X_val, y_val
 
