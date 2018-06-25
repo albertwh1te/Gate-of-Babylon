@@ -6,7 +6,7 @@ from random import randint
 import pandas as pd
 import lightgbm as lgb
 from sklearn.model_selection import StratifiedShuffleSplit
-from sklearn.metrics import roc_curve, auc, roc_auc_score
+from sklearn.metrics import roc_curve, auc, roc_auc_score, classification_report
 
 
 __all__ = ['TrainTestValidation', 'runLGB', 'split', 'evaluate']
@@ -68,7 +68,10 @@ def evaluate(model, X_test, y_test):
         y_test, y_pred)
     log("false_positive_rate:{fpr}\ntrue_positive_rate:{tpr}".format(
         fpr=false_positive_rate, tpr=true_positive_rate))
+    log('roc auc:')
     log(roc_auc_score(y_test, y_pred))
+    log('classification report:')
+    log(classification_report(y_test, y_pred))
 
 
 def runLGB(raw: pd.DataFrame, parameters: dict, lablename: str):
