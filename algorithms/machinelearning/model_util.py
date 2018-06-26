@@ -71,6 +71,7 @@ def evaluate(model, X_test, y_test):
     log('roc auc:')
     log(roc_auc_score(y_test, y_pred))
     log('classification report:')
+    y_pred = list(1 if x > 0.5 else 0 for x in y_pred)
     log(classification_report(y_test, y_pred))
 
 
