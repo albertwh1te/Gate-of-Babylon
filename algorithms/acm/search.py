@@ -29,5 +29,5 @@ def topk_quick(array, k):
             right.append(i)
     if len(left) < k:
         return left + topk_quick(right, k-len(left))
-    if len(left) > k:
+    if len(left) >= k:
         return topk_quick(left, k)
