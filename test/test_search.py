@@ -8,3 +8,6 @@ def test_topk():
     print(sorted(array)[:k], k, array)
     assert sorted(array)[:k] == sorted(search.topk_min_stack(array, k))
     assert sorted(array)[:k] == sorted(search.topk_quick(array, k))
+    # make code coverage 100%
+    assert [1] == search.topk_min_stack([1], 100)
+    assert [1] == search.topk_quick([1], 100)

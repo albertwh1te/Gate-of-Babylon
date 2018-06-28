@@ -2,8 +2,8 @@ from random import choice
 
 
 def topk_min_stack(array, k):
-    if len(array) == 1:
-        return array[0]
+    if len(array) <= k:
+        return array
     min_stack = sorted(array[:k])
     max_value = min_stack[k-1]
     for i in array[k:]:
@@ -15,7 +15,7 @@ def topk_min_stack(array, k):
 
 
 def topk_quick(array, k):
-    if len(array) <= 1:
+    if len(array) <= k:
         return array
     if k == 1:
         return [min(array)]
@@ -27,8 +27,6 @@ def topk_quick(array, k):
             left.append(i)
         else:
             right.append(i)
-    if len(left) == k:
-        return left
     if len(left) < k:
         return left + topk_quick(right, k-len(left))
     if len(left) > k:
