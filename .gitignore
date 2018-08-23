@@ -250,3 +250,7 @@ venv.bak/
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# mac ds_store
+.DS_Store
+
+
