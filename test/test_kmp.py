@@ -1,4 +1,4 @@
-from algorithms.acm.kmp import find_pmt, kmp
+from algorithms.acm.kmp import find_pmt, kmp, bruteforce_match
 
 
 def test_find_pmt():
@@ -13,3 +13,10 @@ def test_kmp():
     s1 = "abcabc"
     s2 = "bc"
     assert kmp(s1, s2) == s1.find(s2)
+
+
+def test_bruteforce_match():
+    assert bruteforce_match("", "") == -1
+    s1 = "abcabc"
+    s2 = "bc"
+    assert bruteforce_match(s1, s2) == s1.find(s2)

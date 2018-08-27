@@ -3,6 +3,24 @@ https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm
 """
 
 
+def bruteforce_match(s1: str, s2: str)->int:
+    if s1 == None or s2 == None or len(s2) < 1 or len(s1) < len(s2):
+        return -1
+    i = j = 0
+    while i < len(s1) and j < len(s2):
+        if s1[i] == s2[j]:
+            i = i + 1
+            j = j + 1
+        else:
+            i = i + 1
+            j = 0
+
+    if j == len(s2):
+        return i - j
+    else:
+        return -1
+
+
 def kmp(s1: str, s2: str)->int:
     if s1 == None or s2 == None or len(s2) < 1 or len(s1) < len(s2):
         return -1
