@@ -46,7 +46,7 @@ def kmp(s1: str, s2: str)->int:
 def find_next(s: str)->[int]:
     """
     input:string
-    output:the partial match table of string
+    output:the next array of string
     """
     if len(s) == 1:
         return [-1]
