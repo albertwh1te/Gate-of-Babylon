@@ -23,17 +23,17 @@ def bruteforce_match(s1: str, s2: str)->int:
 def kmp(s1: str, s2: str)->int:
     if s1 == None or s2 == None or len(s2) < 1 or len(s1) < len(s2):
         return -1
-    pmt = find_pmt(s2)
+    next_arr = find_next(s2)
     i = j = 0
     while i < len(s1) and j < len(s2):
         if s1[i] == s2[j]:
             i = i + 1
             j = j + 1
         else:
-            if pmt[j] == -1:
+            if next_arr[j] == -1:
                 i = i + 1
             else:
-                j = pmt[j]
+                j = next_arr[j]
 
     if j == len(s2):
         # return the start index of substring
@@ -43,7 +43,7 @@ def kmp(s1: str, s2: str)->int:
         return -1
 
 
-def find_pmt(s: str)->[int]:
+def find_next(s: str)->[int]:
     """
     input:string
     output:the partial match table of string
