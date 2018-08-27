@@ -10,3 +10,12 @@
 This project contains my personal code treasury, includes but not limited to algorithms, utility function and demonstration code.
 
 You can view the files here, or clone the project.
+
+### Test
+```Bash
+git clone git@github.com:MarkWh1te/Gate-of-Babylon.git
+cd Gate-of-Babylon 
+pip install -r requirements.txt
+pytest -v
+```
+
