@@ -12,12 +12,6 @@ class BinaryNode(object):
         self.left = None
         self.right = None
 
-    def __repr__(self):
-        """
-        serializer for binary tree
-        """
-        return f"_{self.left}_{self.value}_{self.right}"
-
 
 def preorder_traversal(root):
     """
