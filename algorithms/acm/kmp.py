@@ -66,13 +66,3 @@ def find_next(s: str)->[int]:
             result[i+1] = 0
         i = i + 1
     return result
-
-
-def main():
-    assert find_next("ab") == [-1, 0]
-    test_str1 = "abcabc"
-    assert find_next(test_str1) == [-1, 0, 0, 0, 1, 2]
-
-
-if __name__ == '__main__':
-    main()

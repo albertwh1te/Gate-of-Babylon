@@ -69,23 +69,3 @@ def postorder_traversal(root):
         if node.right:
             stack.append(node.right)
     return results[::-1]
-
-
-def main():
-    root = BinaryNode('root')
-    n1 = BinaryNode(1)
-    n2 = BinaryNode(2)
-    n3 = BinaryNode(3)
-    n4 = BinaryNode(4)
-    root.left = n1
-    root.right = n2
-    n1.left = n3
-    n1.right = n4
-    print(root)
-    print('preorder:', preorder_traversal(root))
-    print('inorder:', inorder_traversal(root))
-    print('postorder:', postorder_traversal(root))
-
-
-if __name__ == '__main__':
-    main()
