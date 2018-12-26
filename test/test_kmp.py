@@ -10,6 +10,7 @@ def test_find_next():
 
 def test_kmp():
     assert kmp("", "") == -1
+    assert kmp("a", "b") == -1
     s1 = "abcabc"
     s2 = "bc"
     assert kmp(s1, s2) == s1.find(s2)
@@ -17,6 +18,7 @@ def test_kmp():
 
 def test_bruteforce_match():
     assert bruteforce_match("", "") == -1
+    assert bruteforce_match("a", "b") == -1
     s1 = "abcabc"
     s2 = "bc"
     assert bruteforce_match(s1, s2) == s1.find(s2)
